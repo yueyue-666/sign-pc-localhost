@@ -13,7 +13,7 @@
       广告代码 真实项目中请移除
       production remove this Ads
     -->
-    <ads v-if="isProPreviewSite && !collapsed"/>
+    <ads v-if="isProPreviewSite && !collapsed" />
     <!-- Ads end -->
 
     <!-- 1.0.0+ 版本 pro-layout 提供 API，
@@ -21,7 +21,7 @@
     -->
     <template v-slot:menuHeaderRender>
       <div>
-        <img src="@/assets/logo.svg" />
+        <img src="@/assets/logo.png" />
         <h1>{{ title }}</h1>
       </div>
     </template>
@@ -37,9 +37,7 @@
     </template>
 
     <setting-drawer v-if="isDev" :settings="settings" @change="handleSettingChange">
-      <div style="margin: 12px 0;">
-        This is SettingDrawer custom footer content.
-      </div>
+      <div style="margin: 12px 0;">This is SettingDrawer custom footer content.</div>
     </setting-drawer>
     <template v-slot:rightContentRender>
       <right-content :top-menu="settings.layout === 'topmenu'" :is-mobile="isMobile" :theme="settings.theme" />
@@ -71,7 +69,7 @@ export default {
     GlobalFooter,
     Ads
   },
-  data () {
+  data() {
     return {
       // preview.pro.antdv.com only use.
       isProPreviewSite: process.env.VUE_APP_PREVIEW === 'true' && process.env.NODE_ENV !== 'development',
@@ -112,7 +110,7 @@ export default {
       mainMenu: state => state.permission.addRouters
     })
   },
-  created () {
+  created() {
     const routes = this.mainMenu.find(item => item.path === '/')
     this.menus = (routes && routes.children) || []
     // 处理侧栏收起状态
@@ -123,7 +121,7 @@ export default {
       this.$store.commit(TOGGLE_MOBILE_TYPE, this.isMobile)
     })
   },
-  mounted () {
+  mounted() {
     const userAgent = navigator.userAgent
     if (userAgent.indexOf('Edge') > -1) {
       this.$nextTick(() => {
@@ -142,7 +140,7 @@ export default {
   },
   methods: {
     i18nRender,
-    handleMediaQuery (val) {
+    handleMediaQuery(val) {
       this.query = val
       if (this.isMobile && !val['screen-xs']) {
         this.isMobile = false
@@ -155,10 +153,10 @@ export default {
         // this.settings.fixSiderbar = false
       }
     },
-    handleCollapse (val) {
+    handleCollapse(val) {
       this.collapsed = val
     },
-    handleSettingChange ({ type, value }) {
+    handleSettingChange({ type, value }) {
       console.log('type', type, value)
       type && (this.settings[type] = value)
       switch (type) {
@@ -180,5 +178,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "./BasicLayout.less";
+@import './BasicLayout.less';
 </style>

@@ -1,35 +1,30 @@
 <template>
-
   <div id="userLayout" :class="['user-layout-wrapper', isMobile && 'mobile']">
     <div class="container">
       <div class="user-layout-lang">
-        <select-lang class="select-lang-trigger" />
+        <!-- <select-lang class="select-lang-trigger" /> -->
       </div>
       <div class="user-layout-content">
         <div class="top">
           <div class="header">
             <a href="/">
-              <img src="~@/assets/logo.svg" class="logo" alt="logo">
-              <span class="title">Ant Design</span>
+              <img src="~@/assets/logo.png" class="logo" alt="logo" />
+              <span class="title">超级签后台</span>
             </a>
           </div>
-          <div class="desc">
-            {{ $t('layouts.userLayout.title') }}
-          </div>
+          <div class="desc">{{ $t('layouts.userLayout.title') }}</div>
         </div>
 
         <router-view />
 
-        <div class="footer">
+        <!-- <div class="footer">
           <div class="links">
             <a href="_self">帮助</a>
             <a href="_self">隐私</a>
             <a href="_self">条款</a>
           </div>
-          <div class="copyright">
-            Copyright &copy; 2018 vueComponent
-          </div>
-        </div>
+          <div class="copyright">Copyright &copy; 2018 vueComponent</div>
+        </div>-->
       </div>
     </div>
   </div>
@@ -45,10 +40,10 @@ export default {
     SelectLang
   },
   mixins: [deviceMixin],
-  mounted () {
+  mounted() {
     document.body.classList.add('userLayout')
   },
-  beforeDestroy () {
+  beforeDestroy() {
     document.body.classList.remove('userLayout')
   }
 }
@@ -77,7 +72,7 @@ export default {
 
     .user-layout-lang {
       width: 100%;
-      height: 40px;
+      height: 150px;
       line-height: 44px;
       text-align: right;
 
@@ -122,7 +117,7 @@ export default {
 
           .title {
             font-size: 33px;
-            color: rgba(0, 0, 0, .85);
+            color: rgba(0, 0, 0, 0.85);
             font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
             font-weight: 600;
             position: relative;
@@ -172,7 +167,6 @@ export default {
     a {
       text-decoration: none;
     }
-
   }
 }
 </style>

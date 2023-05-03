@@ -1,4 +1,5 @@
 export const ACCESS_TOKEN = 'Access-Token'
+// export const ACCESS_TOKEN = localStorage.getItem('token')
 
 export const SIDEBAR_TYPE = 'sidebar_type'
 export const TOGGLE_MOBILE_TYPE = 'is_mobile'
