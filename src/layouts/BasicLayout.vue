@@ -21,8 +21,8 @@
     -->
     <template v-slot:menuHeaderRender>
       <div>
-        <img src="@/assets/logo.png" />
-        <h1>{{ title }}</h1>
+        <img src="@/assets/logo1.png" style="width:80%;height:100%;" />
+        <!-- <h1>{{ title }}</h1> -->
       </div>
     </template>
     <!-- 1.0.0+ 版本 pro-layout 提供 API,

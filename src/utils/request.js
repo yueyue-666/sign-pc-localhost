@@ -13,7 +13,7 @@ const request = axios.create({
 })
 
 // 异常拦截处理器
-const errorHandler = (error) => {
+const errorHandler = error => {
   if (error.response) {
     const data = error.response.data
     // 从 localstorage 获取 token
@@ -43,6 +43,10 @@ const errorHandler = (error) => {
 
 // request interceptor
 request.interceptors.request.use(config => {
+  if (localStorage.getItem('token')) {
+    config.headers[token] = localStorage.getItem('token')
+  }
+
   const token = storage.get(ACCESS_TOKEN)
   // 如果 token 存在
   // 让每个请求携带自定义 token 请根据实际情况自行修改
@@ -53,20 +57,18 @@ request.interceptors.request.use(config => {
 }, errorHandler)
 
 // response interceptor
-request.interceptors.response.use((response) => {
+request.interceptors.response.use(response => {
+  console.log(response)
   return response.data
 }, errorHandler)
 
 const installer = {
   vm: {},
-  install (Vue) {
+  install(Vue) {
     Vue.use(VueAxios, request)
   }
 }
 
 export default request
 
-export {
-  installer as VueAxios,
-  request as axios
-}
+export { installer as VueAxios, request as axios }

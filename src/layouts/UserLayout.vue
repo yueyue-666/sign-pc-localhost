@@ -6,12 +6,12 @@
       </div>
       <div class="user-layout-content">
         <div class="top">
-          <div class="header">
+          <!-- <div class="header">
             <a href="/">
               <img src="~@/assets/logo.png" class="logo" alt="logo" />
               <span class="title">超级签后台</span>
             </a>
-          </div>
+          </div>-->
           <div class="desc">{{ $t('layouts.userLayout.title') }}</div>
         </div>
 
@@ -65,10 +65,19 @@ export default {
   .container {
     width: 100%;
     min-height: 100%;
-    background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
-    background-size: 100%;
+    // background: #f0f2f5 url(~@/assets/background.png) no-repeat top center;
+    // background-size: 100% 100%;
     //padding: 50px 0 84px;
     position: relative;
+    background-color: rgb(221, 234, 253);
+    background-image: radial-gradient(closest-side, rgb(0, 106, 255), rgba(0, 106, 255, 0)),
+      radial-gradient(closest-side, rgb(193, 171, 249), rgba(193, 171, 249, 0)),
+      radial-gradient(closest-side, rgb(255, 255, 255), rgba(255, 255, 255, 0)),
+      radial-gradient(closest-side, rgb(140, 0, 255), rgba(140, 0, 255, 0));
+    background-size: 130vw 130vh, 120vw 120vh, 100vw 150vh, 120vw 130vh;
+    background-position: -80vw -80vh, 30vw -20vh, -20vw 20vh, 30vw 20vh;
+    background-repeat: no-repeat;
+    animation: 15s moiveAnimation infinite;
 
     .user-layout-lang {
       width: 100%;
@@ -85,6 +94,28 @@ export default {
         justify-content: center;
         font-size: 18px;
         vertical-align: middle;
+      }
+    }
+    @keyframes moiveAnimation {
+      0%,
+      100% {
+        background-size: 130vw 130vh, 120vw 120vh, 100vw 150vh, 120vw 130vh;
+        background-position: -80vw -80vh, 30vw -20vh, -20vw 20vh, 30vw 20vh;
+      }
+
+      25% {
+        background-size: 120vw 120vh, 130vw 150vh, 130vw 120vh, 100vw 110vh;
+        background-position: -30vw -30vh, 40vw -10vh, 0vw 10vh, -10vw 20vh;
+      }
+
+      50% {
+        background-size: 130vw 130vh, 140vw 100vh, 100vw 150vh, 90vw 110vh;
+        background-position: 10vw -60vh, 20vw 10vh, 10vw 30vh, 10vw -20vh;
+      }
+
+      75% {
+        background-size: 140vw 140vh, 100vw 130vh, 100vw 150vh, 130vw 110vh;
+        background-position: -70vw -70vh, 0vw -10vh, 30vw -20vh, 20vw 30vh;
       }
     }
 
@@ -133,8 +164,11 @@ export default {
       }
 
       .main {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 5px;
+        padding: 40px;
+        width: 400px;
         min-width: 260px;
-        width: 368px;
         margin: 0 auto;
       }
 
