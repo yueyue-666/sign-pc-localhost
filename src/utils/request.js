@@ -20,8 +20,14 @@ const errorHandler = error => {
     const token = storage.get(ACCESS_TOKEN)
     if (error.response.status === 403) {
       notification.error({
-        message: 'Forbidden',
-        description: data.message
+        message: data.msg,
+        description: ''
+      })
+    }
+    if (error.response.status === 500) {
+      notification.error({
+        message: data.msg,
+        description: ''
       })
     }
     if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
