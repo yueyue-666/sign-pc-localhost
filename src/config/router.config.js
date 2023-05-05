@@ -13,8 +13,57 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: 'menu.home' },
-    redirect: '/dashboard/workplace',
+    redirect: '/home/index',
     children: [
+      // 账户首页
+      {
+        path: '/home/index',
+        name: 'home',
+        component: () => import('@/views/home/index'),
+        meta: { title: '账户首页', keepAlive: true, icon: 'home', permission: ['form'] }
+      },
+      {
+        path: '/home/v2',
+        name: 'v2',
+        component: () => import('@/views/home/v2'),
+        meta: { title: '超级签名V2', keepAlive: true, icon: 'file', permission: ['form'] }
+      },
+      {
+        path: '/home/v3',
+        name: 'v3',
+        component: () => import('@/views/home/v3'),
+        meta: { title: '超级签名V3', keepAlive: true, icon: 'file-text', permission: ['form'] }
+      },
+      {
+        path: '/home/listPageAll',
+        name: 'listPageAll',
+        component: () => import('@/views/home/listPageAll'),
+        meta: { title: '混合签名', keepAlive: true, icon: 'file-pdf', permission: ['form'] }
+      },
+      {
+        path: '/home/issued',
+        name: 'issued',
+        component: () => import('@/views/home/issued'),
+        meta: { title: '签发记录', keepAlive: true, icon: 'hdd', permission: ['form'] }
+      },
+      {
+        path: '/home/statisticsPage',
+        name: 'statisticsPage',
+        component: () => import('@/views/home/statisticsPage'),
+        meta: { title: '数据统计', keepAlive: true, icon: 'bar-chart', permission: ['form'] }
+      },
+      {
+        path: '/home/finance',
+        name: 'finance',
+        component: () => import('@/views/home/finance'),
+        meta: { title: '财务信息', keepAlive: true, icon: 'dollar', permission: ['form'] }
+      },
+      {
+        path: '/home/crash',
+        name: 'crash',
+        component: () => import('@/views/home/crash'),
+        meta: { title: '闪退助手', keepAlive: true, icon: 'rocket', permission: ['form'] }
+      },
       // dashboard
       {
         path: '/dashboard',

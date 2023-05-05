@@ -236,47 +236,41 @@ export default {
 
       validateFields(validateFieldsKey, { force: true }, (err, values) => {
         if (!err) {
-          // console.log('login form', values)
-          // const loginParams = { ...values }
-          // delete loginParams.username
-          // loginParams[!state.loginType ? 'email' : 'username'] = values.username
-          // loginParams.password = values.password
-          // Login(loginParams)
-          //   .then(res => this.loginSuccess(res))
-          //   .catch(err => this.requestFailed(err))
-          //   .finally(() => {
-          //     state.loginBtn = false
-          //   })
-
           values.verifyCodeKey = this.verifyCodeKey
           this.$http
             .post('/backstage/login', values)
-            .then(res => {
-              let data = res.data
-              localStorage.setItem('token', data.token)
-              localStorage.setItem('refreshToken', data.refreshToken)
-              localStorage.setItem('userRole', data.userRole)
-              localStorage.setItem('userId', data.userId)
-              localStorage.setItem('username', data.username)
-              localStorage.setItem('isUseV3', data.isUseV3)
-              localStorage.setItem('isUseMix', data.isUseMix)
-              localStorage.setItem('flagId', data.flagId)
-              localStorage.setItem('isShowSubData', data.isShowSubData)
-              localStorage.setItem('isDownloadData', data.isDownloadData)
-              localStorage.setItem('flagId', data.flagId)
-              // this.loginSuccess(res)
+            .then(
+              res => {
+                let data = res.data
+                localStorage.setItem('token', data.token)
+                localStorage.setItem('refreshToken', data.refreshToken)
+                localStorage.setItem('userRole', data.userRole)
+                localStorage.setItem('userId', data.userId)
+                localStorage.setItem('username', data.username)
+                localStorage.setItem('isUseV3', data.isUseV3)
+                localStorage.setItem('isUseMix', data.isUseMix)
+                localStorage.setItem('flagId', data.flagId)
+                localStorage.setItem('isShowSubData', data.isShowSubData)
+                localStorage.setItem('isDownloadData', data.isDownloadData)
+                localStorage.setItem('flagId', data.flagId)
+                // this.loginSuccess(res)
 
-              const loginParams = { ...values }
-              delete loginParams.username
-              loginParams[!state.loginType ? 'email' : 'username'] = values.username
-              loginParams.password = values.password
-              Login(loginParams)
-                .then(response => this.loginSuccess(response))
-                .catch(err => this.requestFailed(err))
-                .finally(() => {
-                  state.loginBtn = false
-                })
-            })
+                const loginParams = { ...values }
+                delete loginParams.username
+                loginParams[!state.loginType ? 'email' : 'username'] = values.username
+                loginParams.password = values.password
+                Login(loginParams)
+                  .then(response => this.loginSuccess(response))
+                  .catch(err => this.requestFailed(err))
+                  .finally(() => {
+                    state.loginBtn = false
+                  })
+              },
+              err => {
+                this.getverifyCode()
+                state.loginBtn = false
+              }
+            )
             .catch(() => {
               state.loginBtn = false
             })
