@@ -21,8 +21,8 @@
     -->
     <template v-slot:menuHeaderRender>
       <div>
-        <img src="@/assets/logo1.png" style="width:80%;height:100%;" />
-        <!-- <h1>{{ title }}</h1> -->
+        <img src="@/assets/logo.png" class="logo" />
+        <h1 class="logo-font">{{ title }}</h1>
       </div>
     </template>
     <!-- 1.0.0+ 版本 pro-layout 提供 API,
@@ -43,9 +43,9 @@
       <right-content :top-menu="settings.layout === 'topmenu'" :is-mobile="isMobile" :theme="settings.theme" />
     </template>
     <!-- custom footer / 自定义Footer -->
-    <template v-slot:footerRender>
+    <!-- <template v-slot:footerRender>
       <global-footer />
-    </template>
+    </template>-->
     <router-view />
   </pro-layout>
 </template>
@@ -58,7 +58,7 @@ import { CONTENT_WIDTH_TYPE, SIDEBAR_TYPE, TOGGLE_MOBILE_TYPE } from '@/store/mu
 
 import defaultSettings from '@/config/defaultSettings'
 import RightContent from '@/components/GlobalHeader/RightContent'
-import GlobalFooter from '@/components/GlobalFooter'
+// import GlobalFooter from '@/components/GlobalFooter'
 import Ads from '@/components/Other/CarbonAds'
 
 export default {
@@ -66,7 +66,7 @@ export default {
   components: {
     SettingDrawer,
     RightContent,
-    GlobalFooter,
+    // GlobalFooter,
     Ads
   },
   data() {
@@ -177,6 +177,20 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import './BasicLayout.less';
+
+.logo {
+  width: 36px;
+  height: 36px;
+}
+
+.logo-font {
+  color: transparent;
+  padding-right: 10px;
+  background-image: linear-gradient(rgb(245, 169, 91), rgb(157, 11, 10));
+  background-clip: text;
+  font-weight: 650;
+  font-style: italic;
+}
 </style>

@@ -29,8 +29,8 @@ const login = options => {
       createTime: 1497160610259,
       deleted: 0,
       roleId: 'admin',
-      lang: 'zh-CN',
-      token: '4291d7da9005377ec9aec4a71ea837f'
+      lang: 'zh-CN'
+      // token: '4291d7da9005377ec9aec4a71ea837f'
     },
     '',
     200,

@@ -63,19 +63,8 @@ export default {
           // }).catch(() => console.log('Oops errors!'))
           return this.$store.dispatch('Logout').then(() => {
             // 退出登录
-            this.$http
-              .post('/logout', {})
-              .then(
-                res => {
-                  localStorage.clear()
-                  this.$router.push({ name: 'login' })
-                },
-                err => {}
-              )
-              .catch(() => {
-                localStorage.clear()
-                this.$router.push({ name: 'login' })
-              })
+            localStorage.clear()
+            this.$router.push({ name: 'login' })
           })
         },
         onCancel() {}
